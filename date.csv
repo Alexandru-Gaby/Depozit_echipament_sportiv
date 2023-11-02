@@ -1,0 +1,29 @@
+ID_produs;Nume_produs;Marime;Pret;Stoc_disponibil;NumeFurnizor;Adresa;NumarComanda;DataComanda
+1;Minge fotbal;5;75 lei;150;Adidas;Strada Sportului, nr. 1;1;01.10.2023
+2;Racheta tenis;M;900;40;Wilson;Aleea Tenisului, nr. 5;1002;02.10.2023
+3;Pantaloni sport;XL;450;40;SportswearShop;Bulevardul Sportiv, nr. 10;1003;03.10.2023
+4;Minge baschet;7;160;160;BasketballSupplies;Strada Baschetului, nr. 3;1004;04.10.2023
+5;Costum inot;L;235;25;SwimPro;Aleea Inotului, nr. 8;1005;05.10.2023
+6;Bicicleta mountain;M;3000;10;BikeWorld;Bulevardul Bicicletelor, nr. 15;1006;06.10.2023
+7;Skiuri;180cm;2200;140;SkiMaster;Strada Schiului, nr. 12;1007;07.10.2023
+8;Placa surf;"6'2""";1850;8;SurfShop;Aleea Surfingului, nr. 7;1008;08.10.2023
+9;Role;41;400;20;RollerWorld;Bulevardul Rolelor, nr. 21;1009;09.10.2023
+10;Casca protectie;M;150;50;SafetyGear;Strada Securitatii, nr. 14;1010;10.10.2023
+11;Minge rugby;4;65;130;RugbyZone;Aleea Rugbyului, nr. 19;1011;11.10.2023
+12;Ghete fotbal;10;470;20;FootballPro;Bulevardul Fotbalului, nr. 11;1012;12.10.2023
+13;Pantaloni ciclism;M;240;40;CyclingGear;Strada Ciclismului, nr. 6;1013;13.10.2023
+14;Vesta salvare;L;250;15;WaterSafety;Aleea Salvarii, nr. 4;1014;14.10.2023
+15;Paddleboard;11';1300;7;PaddleAdventures;Bulevardul Paddleboard-ului, nr. 17;1015;15.10.2023
+16;Racheta badminton;N/A;30;75;BadmintonWorld;Strada Badmintonului, nr. 9;1016;16.10.2023
+17;Skateboard complet;N/A;450;40;SkateShop;Calea Plevnei, nr.222;1017;17.10.2023
+18;Cort camping;4 persoane;1000;12;CampingSupplies;Bulevardul Campingului, nr. 2;1018;18.10.2023
+19;Bata baseball;"30""";50;160;BaseballPro;Strada Baseball-ului, nr. 18;1019;19.10.2023
+20;Minge ping pong;N/A;10;100;PingPongCentral;Aleea Ping Pong-ului, nr. 22;1020;20.10.2023
+21;Arc si sageti;M;75;280;ArcheryStore;Bulevardul Arcurilor, nr. 16;1021;21.10.2023
+22;Racheta squash;N/A;140;15;SquashWorld;Strada Squash-ului, nr. 20;1022;22.10.2023
+23;Tricou sport;M;50;300;SportsTech;Aleea Tehnologiei Sportive, nr. 10;1023;23.10.2023
+24;Fotoliu camping;N/A;420;75;RelaxationGear;Bulevardul Relaxarii, nr. 6;1024;24.10.2023
+25;Bomboane energizante;N/A;25;50;EnergyBoost;Strada Energiei, nr. 3;1025;25.10.2023
+26;Echipament scufundari;L;1520;180;DivePro;Aleea Scufundarilor, nr. 11;1026;26.10.2023
+27;Colac  inot;N/A;38;150;SwimmingEssentials;Bulevardul Inotului, nr. 14;1027;27.10.2023
+28;Echipament alpinism;M;590;100;ClimbExtreme;Strada Alpinismului;24.10.1902;28.10.2023
