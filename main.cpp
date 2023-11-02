@@ -87,7 +87,6 @@ public:
     }
 
 
-
 };
 
 class Produs
@@ -182,6 +181,8 @@ int main()
         Produs produs(id, nume, marime, pret, stoc, furnizor);
         produse.push_back(produs);
 
+        std::cout << "Nume Furnizor: " << furnizor.GetNume() << std::endl;
+        std::cout << "Adresa Furnizor: " << furnizor.GetAdresa() << std::endl;
         /*
         std::cout << "| " << std::setw(7) << id << " | " << std::setw(22) << nume << " | " << std::setw(11) << marime
                   << " | " << std::setw(9) << pret << "    | " << std::setw(9) << stoc << "       | "
@@ -203,6 +204,7 @@ int main()
     Produs produs1(1, "NumeProdus1", "Marime1", 50, 10, furnizor1);
     Produs produs2(2, "NumeProdus2", "Marime2", 60, 15, furnizor2);
 
+
     comanda.AdaugaProdus(produs1);
     comanda.AdaugaProdus(produs2);
 
@@ -215,7 +217,7 @@ int main()
         if (produs.GetID() == idProdusDeModificat)
         {
             produs.SetPret(noulPret);
-            std::cout << "Pretul produsului cu ID " << idProdusDeModificat << " a fost actualizat cu succes."
+            std::cout << "\n Pretul produsului cu ID " << idProdusDeModificat << " a fost actualizat cu succes."
                       << std::endl;
             std::cout
                     << "---------------------------------------------------------------------------------------------------------------------"
