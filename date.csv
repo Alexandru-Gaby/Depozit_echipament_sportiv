@@ -1,29 +1,23 @@
-ID_produs;Nume_produs;Marime;Pret;Stoc_disponibil;NumeFurnizor;Adresa;
-1;Minge fotbal;5;25 lei;150;Adidas;Strada Sportului, nr. 1;
-2;Racheta tenis;M;900;40;Worldwide Tennis Gear Ltd.;Aleea Tenisului, nr. 5;
-3;Pantaloni sport;XL;450;40;SportswearShop;Bulevardul Sportiv, nr. 10;
-4;Minge baschet;7;90;160;BasketballSupplies;Strada Baschetului, nr. 3;
-5;Costum inot;L;235;25;SwimPro;Aleea Inotului, nr. 8;
-6;Bicicleta mountain;M;3000;10;BikeWorld;Bulevardul Bicicletelor, nr. 15;
-7;Skiuri;180cm;200;1500;SkiMaster;Strada Schiului, nr. 12;
-8;Placa surf;"6'2""";1850;8;SurfShop;Aleea Surfingului, nr. 7;
-9;Role;41;400;20;RollerWorld;Bulevardul Rolelor, nr. 21;
-10;Casca protectie;M;150;50;SafetyGear;Strada Securitatii, nr. 14;
-11;Minge rugby;4;35;130;RugbyZone;Aleea Rugbyului, nr. 19;
-12;Ghete fotbal;7;470;20;FootballPro;Bulevardul Fotbalului, nr. 11;
-13;Pantaloni ciclism;S;240;40;CyclingGear;Strada Ciclismului, nr. 6;
-14;Vesta salvare;L;250;15;WaterSafety;Aleea Salvarii, nr. 4;
-15;Paddleboard;11';1300;7;PaddleAdventures;Bulevardul Paddleboard-ului, nr. 17;
-16;Racheta badminton;N/A;30;75;BadmintonWorld;Strada Badmintonului, nr. 9;
-17;Skateboard complet;N/A;450;40;SkateShop;Calea Plevnei, nr.222;
-18;Cort camping;4 persoane;1000;12;CampingSupplies;Bulevardul Campingului, nr. 2;
-19;Bata baseball;"30""";20;160;BaseballPro;Strada Baseball-ului, nr. 18;
-20;Minge ping pong;N/A;10;100;PingPongCentral;Aleea Ping Pong-ului, nr. 22;
-21;Arc si sageti;M;75;280;ArcheryStore;Bulevardul Arcurilor, nr. 16;
-22;Racheta squash;N/A;140;15;SquashWorld;Strada Squash-ului, nr. 20;
-23;Trena sport;S;50;300;SportsTech;Aleea Tehnologiei Sportive, nr. 10;
-24;Fotoliu camping;N/A;720;75;RelaxationGear;Bulevardul Relaxarii, nr. 6;
-25;Bomboane energizante;N/A;5;50;EnergyBoost;Strada Energiei, nr. 3;
-26;Echipament scufundari;L;1820;180;DivePro;Aleea Scufundarilor, nr. 11;
-27;Colac  inot;N/A;8;150;SwimmingEssentials;Bulevardul Inotului, nr. 141;
-28;Echipament alpinism;M;90;1000;ClimbExtreme;Strada Alpinismului;
+ID_produs;Nume_produs;Marime;Pret;Stoc_disponibil;NumeFurnizor;Adresa
+1;Minge Adidas UCL PRO;5;516 lei;50;11Teamsports;Strada Tineretului Nr. 10, Bucuresti 
+2;Racheta tenis Wilson;M;900;40;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti
+3;Pantaloni sport Nike;XL;400;40;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti
+4;Minge baschet Nike Everyday All Court 8P;7;170;160;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti
+5;Costum inot Arena;L;135;25;Arena;Dimitrie Cantemir 40, Oradea - Bihor
+6;Bicicleta mountain Cannondale;M;3000;10;Supreme Bikes;Str. Closca nr. 18, Timisoara
+7;Schi Fischer RC4 THE CURV DTX MT;180cm;2500;15;Fischerskishop;Str. Gheorghe Titeica Nr.121D, Bucuresti
+8;Placa surf SUP TAO SURF TT;11’6;3060;18;Hibiscus sport;Str. Neajlovului, Nr. 112, Bucuresti
+9;Role Fila NRK G;41;400;20;Skates;Calea Plevnei, nr.222, Bucuresti
+10;Casca protectie FORCE SKI;M;150;50;Supreme Bikes;Str. Closca nr. 18, Timisoara
+11;Minge rugby MIKASA KF-S;4;35;130;ExtensoSport;Aleea Str. Sava Hentia nr.6, Bucuresti
+12;Ghete fotbal Phantom Gx Club Mg;10;270;20;SportVision;Str. Dinu Vintila, Nr.11, Bucuresti
+17;Skateboard complet Enuff;7.5';450;40;Skates;Calea Plevnei, nr.222, Bucuresti
+18;Cort camping Coleman MacKenzie Blackout 4;4 persoane;1000;12;ForCamping ;Strada Popasului 110, Voluntari
+19;Bata baseball BWP 73 Maple;"30""";20;160;Croft;Calea Feldioarei, nr.98, Brasov
+20;Mingi ping pong Andro Speedball 3S*** 72BUC;N/A;310;100;PingPongShop;Strada Hategana, nr 17, Bucuresti
+21;Arc si sageti CORE SILHOUETTE;"Arc 66""";575;280;Arcuri&sageti;Calea Calarasi, nr. 161, Bucuresti
+22;Racheta squash Oliver;N/A;440;15;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti
+24;Scaun Crespo camping;N/A;720;75;ForCamping ;Strada Popasului 110, Voluntari
+26;Exodry 4.0 Scubapro;L;3220;80;ScubaMag;Strada Dobrila Eugeniu 11, Constanta
+27;Frenzy Scooter FR250 ;N/A;550;150;Skates;Calea Plevnei, nr.222, Bucuresti
+28;Echipament alpinism Ocun Twist;M;90;1000;ForCamping ;Strada Popasului 110, Voluntari

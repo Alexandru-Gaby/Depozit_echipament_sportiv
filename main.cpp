@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <csv.hpp>
-//#include <iomanip>
 
 using namespace csv;
 
@@ -36,6 +35,12 @@ public:
         return os;
     }
 
+    friend std::istream& operator>>(std::istream& is, Furnizor& furnizor)
+    {
+        is >> furnizor.NumeFurnizor >> furnizor.Adresa;
+        return is;
+    }
+
     const std::string &GetNume() const
     {
         return NumeFurnizor;
@@ -49,8 +54,8 @@ public:
 
 class Produs;
 
-
-class ComenziAchizitii {
+class ComenziAchizitii
+{
 private:
     int NumarComanda;
     std::string DataComanda;
@@ -64,7 +69,8 @@ public:
             : NumarComanda(other.NumarComanda), DataComanda(other.DataComanda),
               produseComandate(other.produseComandate) {}
 
-    ComenziAchizitii &operator=(const ComenziAchizitii &other) {
+    ComenziAchizitii &operator=(const ComenziAchizitii &other)
+    {
         if (this == &other) return *this;
         NumarComanda = other.NumarComanda;
         DataComanda = other.DataComanda;
@@ -75,12 +81,12 @@ public:
 
     ~ComenziAchizitii() = default;
 
-    friend std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda) {
+    friend std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda)
+    {
         os << "Numar Comanda: " << comanda.NumarComanda << " | Data Comanda: " << comanda.DataComanda;
         return os;
     }
 
-    // Funcție pentru adăugarea unui produs în comandă
     void AdaugaProdus(const Produs &produs)
     {
         produseComandate.push_back(produs);
@@ -101,7 +107,7 @@ private:
 
 
 public:
-    Produs(int id,std::string  nume, std::string  marime, int pret, int stoc, const Furnizor& furnizor)
+    Produs(int id,std::string  nume, std::string  marime, int pret, int stoc, const Furnizor &furnizor)
             : ID_produs(id), Nume_produs(std::move(nume)), Marime(std::move(marime)), Pret(pret), Stoc_disponibil(stoc), furnizorProdus(furnizor){}
 
 
@@ -109,7 +115,7 @@ public:
             : ID_produs(other.ID_produs), Nume_produs(other.Nume_produs), Marime(other.Marime),
               Pret(other.Pret), Stoc_disponibil(other.Stoc_disponibil), furnizorProdus(other.furnizorProdus){}
 
-    Produs& operator=(const Produs& other)
+    Produs& operator = (const Produs& other)
     {
         if (this == &other) return *this;
         ID_produs = other.ID_produs;
@@ -121,9 +127,10 @@ public:
         return *this;
     }
 
+
     ~Produs() = default;
 
-    friend std::ostream& operator<<(std::ostream& os, const Produs& produs)
+    friend std::ostream& operator<<(std::ostream& os, const Produs &produs)
     {
         os << "ID Produs: " << produs.ID_produs << " | Nume Produs: " << produs.Nume_produs
            << " | Marime: " << produs.Marime << " | Pret: " << produs.Pret << " RON | Stoc Disponibil: " << produs.Stoc_disponibil
@@ -136,6 +143,10 @@ public:
         return ID_produs;
     }
 
+    const Furnizor &GetFurnizor() const
+    {
+        return furnizorProdus;
+    }
 
     void SetPret(int nouPret)
     {
@@ -148,6 +159,30 @@ public:
         {
             std::cout << "Pretul nu poate fi negativ." << std::endl;
         }
+    }
+
+    static void Afisare_Produse(const std::vector<Produs> &produse)
+    {
+        for (const Produs &produs: produse)
+        {
+            std::cout << produs << std::endl;
+            std::cout
+                    << "---------------------------------------------------------------------------------------------------------------------"
+                    << std::endl;
+
+        }
+    }
+
+    static Produs CitesteProduseDinFisier(const CSVRow& row)
+    {
+        int id = std::stoi(row["ID_produs"].get<>());
+        std::string nume = row["Nume_produs"].get<>();
+        std::string marime = row["Marime"].get<>();
+        int pret = std::stoi(row["Pret"].get<>());
+        int stoc = std::stoi(row["Stoc_disponibil"].get<>());
+        Furnizor furnizor(row["NumeFurnizor"].get<std::string>(), row["Adresa"].get<std::string>());
+
+        return Produs(id, nume, marime, pret, stoc, furnizor);
     }
 
 
@@ -163,37 +198,17 @@ int main()
 
     std::vector<Produs> produse;
 
-    ///std::cout << "---------------------------------------------------------------------------------------------------------------------" << std::endl;
-    ///std::cout << "|ID_produs|     Nume_produs       |    Marime    |  Pret (RON) | Stoc disponibil | Nume furnizor| Adresa furnizor | DataComanda |" << std::endl;
-    ///std::cout << "---------------------------------------------------------------------------------------------------------------------" << std::endl;
 
-    for (CSVRow &row: reader)
+
+    for (CSVRow &row : reader)
     {
-
-        int id = std::stoi(row["ID_produs"].get<>());
-        std::string nume = row["Nume_produs"].get<>();
-        std::string marime = row["Marime"].get<>();
-        int pret = std::stoi(row["Pret"].get<>());
-        int stoc = std::stoi(row["Stoc_disponibil"].get<>());
-        Furnizor furnizor(row["NumeFurnizor"].get<std::string>(), row["Adresa"].get<std::string>());
-
-
-        Produs produs(id, nume, marime, pret, stoc, furnizor);
+        Produs produs = Produs::CitesteProduseDinFisier(row);
         produse.push_back(produs);
 
-        std::cout << "Nume Furnizor: " << furnizor.GetNume() << std::endl;
-        std::cout << "Adresa Furnizor: " << furnizor.GetAdresa() << std::endl;
-        /*
-        std::cout << "| " << std::setw(7) << id << " | " << std::setw(22) << nume << " | " << std::setw(11) << marime
-                  << " | " << std::setw(9) << pret << "    | " << std::setw(9) << stoc << "       | "
-                  << std::setw(9) << furnizor.GetNume() << "  |"
-                  << std::setw(9) << furnizor.GetAdresa() << "  |" << row["DataComanda"].get<std::string>()
-                  << std::endl;
-        std::cout << "---------------------------------------------------------------------------------------------------------------------" << std::endl;
-
-        */
-
+        std::cout << "Nume Furnizor: " << produs.GetFurnizor().GetNume() << std::endl;
+        std::cout << "Adresa Furnizor: " << produs.GetFurnizor().GetAdresa() << std::endl;
     }
+
 
     ComenziAchizitii comanda(100, "02/11/2023");
 
@@ -225,15 +240,11 @@ int main()
             break;
         }
     }
-    std::cout << "Detalii produse dupa actualizare:" << std::endl;
-    for (const Produs &produs: produse)
-    {
-        std::cout << produs << std::endl;
-        std::cout
-                << "---------------------------------------------------------------------------------------------------------------------"
-                << std::endl;
 
-    }
+    std::cout << "Detalii produse dupa actualizare:" << std::endl;
+
+
+    Produs::Afisare_Produse(produse);
 
     return 0;
 }
