@@ -1,10 +1,17 @@
-# OOP Template
+# Depozit echipament sportiv
 
 ### Tema 0
 
-- [ ] Nume proiect (poate fi schimbat ulterior)
-- [ ] Scurtă descriere a temei alese, ce v-ați propus să implementați
+- [x] Depozit echipament sportiv
+- [x] Tema aleasă implică implementarea unui sistem simplu de gestionare a unui depozit de echipamente sportive. Acest sistem constă din mai multe clase, inclusiv Produs, Furnizor, ComenziAchizitii, și Depozit.
 
+Clasa Produs reprezintă un produs din depozit, cum ar fi un echipament sportiv. Acesta are atribute precum ID, nume, mărime, preț, stoc disponibil și furnizor asociat. Sunt implementate funcții pentru afișarea detaliilor produsului și actualizarea prețului.
+
+Clasa Furnizor reprezintă un furnizor de echipamente sportive, cu un nume și o adresă asociată. Atributele furnizorului sunt utilizate în clasa Produs.
+
+Clasa ComenziAchizitii reprezintă o comandă de achiziții pentru echipamente sportive. Aceasta conține un număr de comandă, o dată și o listă de produse comandate.
+
+Clasa Depozit oferă funcționalitate pentru adăugarea de produse în depozit, sortarea acestora după preț, și afișarea lor.
 ## Tema 1
 
 #### Cerințe

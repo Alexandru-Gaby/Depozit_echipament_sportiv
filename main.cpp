@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <csv.hpp>
+//#include <algorithm>
 
 using namespace csv;
 
@@ -142,6 +143,10 @@ public:
     {
         return ID_produs;
     }
+    int GetPret() const
+    {
+        return Pret;
+    }
 
     const Furnizor &GetFurnizor() const
     {
@@ -160,7 +165,7 @@ public:
             std::cout << "Pretul nu poate fi negativ." << std::endl;
         }
     }
-
+    /*
     static void Afisare_Produse(const std::vector<Produs> &produse)
     {
         for (const Produs &produs: produse)
@@ -172,7 +177,7 @@ public:
 
         }
     }
-
+    */
     static Produs CitesteProduseDinFisier(const CSVRow& row)
     {
         int id = std::stoi(row["ID_produs"].get<>());
@@ -187,7 +192,49 @@ public:
 
 
 };
+class Depozit
+{
+private:
+    std:: vector<Produs> produseDepozit;
 
+public:
+
+    void Adauga_produs(const Produs &produs)
+    {
+        produseDepozit.push_back(produs);
+    }
+
+    void Sortare_produse_dupa_pret()
+    {
+        std::sort(produseDepozit.begin(), produseDepozit.end(), [] (const Produs &a, const Produs &b)
+        {
+            return a.GetPret() < b.GetPret();
+        });
+    };
+
+    void AfiseazaProduse()
+    {
+        for (const Produs &produs : produseDepozit)
+        {
+            std::cout << produs << std::endl;
+            std::cout << "---------------------------------------------------------------------------------------------------------------------" << std::endl;
+        }
+    }
+
+    void ActualizarePret(int ID_produs, int Pret_nou)
+    {
+     for(Produs &produs : produseDepozit)
+     {
+         if(produs.GetID() == ID_produs )
+         {
+             produs.SetPret(Pret_nou);
+             break;
+         }
+     }
+    }
+
+
+};
 
 int main()
 {
@@ -197,13 +244,13 @@ int main()
     CSVReader reader(file, format);
 
     std::vector<Produs> produse;
-
-
+    Depozit depozit;
 
     for (CSVRow &row : reader)
     {
         Produs produs = Produs::CitesteProduseDinFisier(row);
         produse.push_back(produs);
+        depozit.Adauga_produs(produs);
 
         std::cout << "Nume Furnizor: " << produs.GetFurnizor().GetNume() << std::endl;
         std::cout << "Adresa Furnizor: " << produs.GetFurnizor().GetAdresa() << std::endl;
@@ -223,7 +270,7 @@ int main()
     comanda.AdaugaProdus(produs1);
     comanda.AdaugaProdus(produs2);
 
-
+    depozit.ActualizarePret(1,100);
     int idProdusDeModificat = 1;
     int noulPret = 100;
 
@@ -243,8 +290,9 @@ int main()
 
     std::cout << "Detalii produse dupa actualizare:" << std::endl;
 
-
-    Produs::Afisare_Produse(produse);
+    depozit.Sortare_produse_dupa_pret();
+    depozit.AfiseazaProduse();
+    //Produs::Afisare_Produse(produse);
 
     return 0;
 }
