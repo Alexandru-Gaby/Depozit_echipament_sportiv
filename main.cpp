@@ -158,7 +158,7 @@ public:
         if (nouPret >= 0)
         {
             Pret = nouPret;
-            std::cout << "Pretul produsului a fost actualizat cu succes." << std::endl;
+            std::cout << "\nPretul produsului a fost actualizat cu succes." << std::endl;
         }
         else
         {
@@ -271,24 +271,9 @@ int main()
     comanda.AdaugaProdus(produs2);
 
     depozit.ActualizarePret(1,100);
-    int idProdusDeModificat = 1;
-    int noulPret = 100;
 
-    for (Produs &produs: produse)
-    {
-        if (produs.GetID() == idProdusDeModificat)
-        {
-            produs.SetPret(noulPret);
-            std::cout << "\n Pretul produsului cu ID " << idProdusDeModificat << " a fost actualizat cu succes."
-                      << std::endl;
-            std::cout
-                    << "---------------------------------------------------------------------------------------------------------------------"
-                    << std::endl;
-            break;
-        }
-    }
 
-    std::cout << "Detalii produse dupa actualizare:" << std::endl;
+    std::cout << "Detalii produse dupa actualizare:\n" << std::endl;
 
     depozit.Sortare_produse_dupa_pret();
     depozit.AfiseazaProduse();
