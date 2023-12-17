@@ -38,12 +38,12 @@ int main()
     Furnizor furnizor2("New Balance", "Adresa2");
 
 
-    Produs produs1(1, "NumeProdus1", "Marime1", 50, 10, furnizor1);
-    Produs produs2(2, "NumeProdus2", "Marime2", 60, 15, furnizor2);
+    //Produs produs1(1, "NumeProdus1", "Marime1", 50, 10, furnizor1);
+    //Produs produs2(2, "NumeProdus2", "Marime2", 60, 15, furnizor2);
 
 
-    comanda.AdaugaProdus(produs1);
-    comanda.AdaugaProdus(produs2);
+    //comanda.AdaugaProdus(produs1);
+    //comanda.AdaugaProdus(produs2);
 
     depozit.ActualizarePret(1, 100);
 
