@@ -1,23 +1,23 @@
-ID_produs;Nume_produs;Marime;Pret;Stoc_disponibil;NumeFurnizor;Adresa
-1;Minge Adidas UCL PRO;5;516 lei;50;11Teamsports;Strada Tineretului Nr. 10, Bucuresti 
-2;Racheta tenis Wilson;M;900;40;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti
-3;Pantaloni sport Nike;XL;400;40;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti
-4;Minge baschet Nike Everyday All Court 8P;7;170;160;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti
-5;Costum inot Arena;L;135;25;Arena;Dimitrie Cantemir 40, Oradea - Bihor
-6;Bicicleta mountain Cannondale;M;3000;10;Supreme Bikes;Str. Closca nr. 18, Timisoara
-7;Schi Fischer RC4 THE CURV DTX MT;180cm;2500;15;Fischerskishop;Str. Gheorghe Titeica Nr.121D, Bucuresti
-8;Placa surf SUP TAO SURF TT;"11.6""";3060;18;Hibiscus sport;Str. Neajlovului, Nr. 112, Bucuresti
-9;Role Fila NRK G;41;400;20;Skates;Calea Plevnei, nr.222, Bucuresti
-10;Casca protectie FORCE SKI;M;150;50;Supreme Bikes;Str. Closca nr. 18, Timisoara
-11;Minge rugby MIKASA KF-S;4;35;130;ExtensoSport;Aleea Str. Sava Hentia nr.6, Bucuresti
-12;Ghete fotbal Phantom Gx Club Mg;10;270;20;SportVision;Str. Dinu Vintila, Nr.11, Bucuresti
-17;Skateboard complet Enuff;7.5';450;40;Skates;Calea Plevnei, nr.222, Bucuresti
-18;Cort camping Coleman MacKenzie Blackout 4;4 persoane;1000;12;ForCamping ;Strada Popasului 110, Voluntari
-19;Bata baseball BWP 73 Maple;"30""";20;160;Croft;Calea Feldioarei, nr.98, Brasov
-20;Mingi ping pong Andro Speedball 3S*** 72BUC;N/A;310;100;PingPongShop;Strada Hategana, nr 17, Bucuresti
-21;Arc si sageti CORE SILHOUETTE;"Arc 66""";575;280;Arcuri&sageti;Calea Calarasi, nr. 161, Bucuresti
-22;Racheta squash Oliver;N/A;440;15;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti
-24;Scaun Crespo camping;N/A;720;75;ForCamping ;Strada Popasului 110, Voluntari
-26;Exodry 4.0 Scubapro;L;3220;80;ScubaMag;Strada Dobrila Eugeniu 11, Constanta
-27;Frenzy Scooter FR250 ;N/A;550;150;Skates;Calea Plevnei, nr.222, Bucuresti
-28;Echipament alpinism Ocun Twist;M;90;1000;ForCamping ;Strada Popasului 110, Voluntari
+ID_produs;Nume_produs;Marime;Pret;Stoc_disponibil;NumeFurnizor;Adresa;Tip_sport
+1;Minge Adidas UCL PRO;5;516 lei;50;11Teamsports;Strada Tineretului Nr. 10, Bucuresti ;Fotbal
+2;Racheta tenis Wilson;M;900;40;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti;Tenis
+3;Pantaloni sport Nike;XL;400;40;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti;Fotbal
+4;Minge baschet Nike Everyday All Court 8P;7;170;160;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti;Baschet
+5;Costum inot Arena;L;135;25;Arena;Dimitrie Cantemir 40, Oradea - Bihor;Inot
+6;Bicicleta mountain Cannondale;M;3000;10;Supreme Bikes;Str. Closca nr. 18, Timisoara;Ciclism
+7;Schi Fischer RC4 THE CURV DTX MT;180cm;2500;15;Fischerskishop;Str. Gheorghe Titeica Nr.121D, Bucuresti;Ski
+8;Trening Nike Dri-FIT Academy 21;L;260;18;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti;Fotbal
+9;Role Fila NRK G;41;400;20;Skates;Calea Plevnei, nr.222, Bucuresti;Role
+10;Casca protectie FORCE SKI;M;150;50;Supreme Bikes;Str. Closca nr. 18, Timisoara;Ski
+11;Minge rugby MIKASA KF-S;4;35;130;ExtensoSport;Aleea Str. Sava Hentia nr.6, Bucuresti;Rugby
+12;Ghete fotbal Phantom Gx Club Mg;45;270;20;SportVision;Str. Dinu Vintila, Nr.11, Bucuresti;Fotbal
+17;Skateboard complet Enuff;7.5';450;40;Skates;Calea Plevnei, nr.222, Bucuresti;Skateboarding
+18;Tricou Nike FC Barcelona;M;175;12;Shop Sport;Str. Maior Coravu Ion, Nr. 9-15, Bucuresti;Fotbal
+19;Bata baseball BWP 73 Maple;"30""";20;160;Croft;Calea Feldioarei, nr.98, Brasov;Baseball
+20;Mingi ping pong Andro Speedball 3S*** 72BUC;N/A;310;100;PingPongShop;Strada Hategana, nr 17, Bucuresti;Ping Pong
+21;Adidasi Nike Zoom Vapor Pro 2 CLY;44;575;280;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti;Tenis
+22;Racheta squash Oliver;N/A;440;15;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti;Tenis
+24;Racheta Wilson Blade 98;N/A;920;75;Tenis Shop;Calea Mosilor, Nr 62-68, Bucuresti;Tenis
+26;Adidasi Baschet Nike Kd TREY 5 VIII;44;600;80;Bravosport;Calea Plevnei, nr.222, Bucuresti;Baschet
+27;Echipament Baschet Kit Power Givova;L;150;50;Bravosport;Calea Plevnei, nr.222, Bucuresti;Baschet
+28;Butterfly Zhang Jike ZJX6;N/A;300;100;Etenis;Strada Carol Davila nr.3, Bucuresti;Ping Pong
