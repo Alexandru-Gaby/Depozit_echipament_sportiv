@@ -5,27 +5,37 @@
 #ifndef OOP_DEPOZIT_H
 #define OOP_DEPOZIT_H
 
-
-#include "Produs.h"
 #include <vector>
+#include <string>
+#include <csv.hpp>
+#include "Produs.h"
 
-class Depozit
+class [[maybe_unused]] Depozit
 {
 private:
-    //vectorul ar trebui sa contina pointeri la clasa produs(upcasting)
-    std:: vector<Produs> produseDepozit;
+    std::vector<std::shared_ptr<Produs>> produseDepozit;
+    std::string locatie;
+    std::string numeDepozit;
 
 public:
-    Depozit(){};
+    Depozit()= default;
 
-    void Adauga_produs(const Produs &produs);
+    [[maybe_unused]] Depozit(const Depozit &other);
 
-    void Sortare_produse_dupa_pret();
+    virtual ~Depozit() = default;
 
-    void AfiseazaProduse();
+    Depozit &operator=(const Depozit& other);
 
-    void ActualizarePret(int ID_produs, int Pret_nou);
 
+    [[maybe_unused]] void Sortare_produse_dupa_pret();
+
+    [[maybe_unused]] void AfiseazaProduse();
+
+    [[maybe_unused]] void ActualizarePret(int ID_produs, int Pret_nou);
+
+    //void CitesteProduseDinFisierCSV();
+
+    //void AdaugaProdusDinFisier(const csv::CSVRow& row);
 
 };
 

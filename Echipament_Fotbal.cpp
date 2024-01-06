@@ -2,25 +2,55 @@
 // Created by Alexandru-Gabriel on 10.12.2023.
 //
 
+#include <csv.hpp>
 #include "Echipament_Fotbal.h"
+#include "cmath"
+#include "EroareProdus.h"
 
-Echipament_Fotbal::Echipament_Fotbal(int id, std::string nume,
-                                     std::string marime, int pret, int stoc, std::string tip_sport,
-                                     const Furnizor &furnizor, std::string culoare_) : Produs(id, nume, marime, pret, stoc, tip_sport, furnizor) {}
 
+Echipament_Fotbal::Echipament_Fotbal(const Echipament_Fotbal &ef):
+Produs(ef), culoare(ef.culoare) {}
 
 float Echipament_Fotbal::AplicareDiscount()
 {
-    if (GetTipSport() == "Fotbal")
-    {
-        float discount = 0.3;
-        float valoareDiscount = GetPret() * discount;
-        SetPret(GetPret() - static_cast<int>(valoareDiscount));
-        std::cout << "Discount aplicat pentru Echipament_fotbal " << valoareDiscount << " RON" << std::endl;
+    float Discount = 0.0;
+    float pretInitial = static_cast<float>(GetPret());
 
-        return static_cast<float>(GetPret());
-    }else{
-        std::cout << "Nu se aplică discount pentru acest tip de echipament." << std::endl;
-        return static_cast<float>(GetPret());
+    if(culoare == ROSU)
+    {
+        Discount = 6.2 * sqrt(pretInitial);
     }
+    else if (culoare == ALBASTRU)
+    {
+        Discount = 6.5 * sqrt(pretInitial);
+    }else if (culoare == ALB)
+    {
+        Discount = 7.3 * sqrt(pretInitial);
+    }
+    float pretFinal = pretInitial - Discount;
+
+    SetPret(static_cast<int>(pretFinal));
+
+    return pretFinal;
+}
+
+void Echipament_Fotbal::citire(const csv::CSVRow &row)
+{
+    std::string col = row["Culoare"].get<std::string>();
+    if (col == "ROSU")
+    {
+        culoare = ROSU;
+    }else if (col == "ALBASTRU")
+    {
+        culoare = ALBASTRU;
+    }else if(col == "ALB")
+    {
+        culoare = ALB;
+    }else throw EroareProprietateProdus("Culoare",col);
+
+}
+
+Echipament_Fotbal *Echipament_Fotbal::clone() const
+{
+    return new Echipament_Fotbal(*this);
 }

@@ -1,26 +1,54 @@
-//
-// Created by Alexandru-Gabriel on 10.12.2023.
-//
-
+#include <cmath>
+#include <csv.hpp>
 #include "Echipament_Baschet.h"
+#include "EroareProdus.h"
 
-Echipament_Baschet::Echipament_Baschet(int id, std::string nume, std::string marime, int pret, int stoc,
-                                       std::string tip_sport, const Furnizor furnizor) : Produs(id,nume,marime,pret,stoc,tip_sport,furnizor){}
+Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb) :Produs(eb),taraProductie(eb.taraProductie){}
 
 float Echipament_Baschet::AplicareDiscount()
 {
-    if (GetTipSport() == "Baschet")
-    {
-        float discount = 0.25;
-        float valoareDiscount = GetPret() * discount;
-        SetPret(GetPret() - static_cast<int>(valoareDiscount));
-        std::cout << "Discount aplicat pentru Echipament_Baschet " << valoareDiscount << " RON" << std::endl;
+    float Discount = 0.0;
+    float pretInitial = static_cast<float>(GetPret());
 
-        return static_cast<float>(GetPret());
-    }else{
-        std::cout << "Nu se aplică discount pentru acest tip de echipament." << std::endl;
-        return static_cast<float>(GetPret());
+    if(taraProductie == ITALIA)
+    {
+        Discount = 3 * pow(pretInitial, 0.7);
     }
+    else if (taraProductie == SUA)
+    {
+        Discount = 4.5 * pow(pretInitial, 0.5);
+    }else if (taraProductie == VIETNAM)
+    {
+        Discount = 5.2 * pow(pretInitial, 0.5);
+
+    }
+    float pretFinal = pretInitial - Discount;
+
+    SetPret(static_cast<int>(pretFinal));
+
+
+    return pretFinal;
 }
 
-Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet& ec): Produs(ec), culoare(ec.culoare){}
+
+Echipament_Baschet *Echipament_Baschet::clone() const
+{
+    return new Echipament_Baschet(*this);
+
+}
+
+void Echipament_Baschet::citire(const csv::CSVRow &row)
+{
+    std::string col = row["Tara productie"].get<std::string>();
+    if (col == "ITALIA")
+    {
+        taraProductie = ITALIA;
+    }else if (col == "SUA")
+    {
+        taraProductie = SUA;
+    }else if(col == "VIETNAM")
+    {
+        taraProductie = VIETNAM;
+    }else throw EroareProprietateProdus("Tara productie", col);
+
+}

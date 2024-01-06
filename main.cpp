@@ -1,11 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <csv.hpp>
+#include "csv.hpp"
 #include "Produs.h"
-#include "ComenziAchizitii.h"
-#include "Depozit.h"
-#include "Echipament_Baschet.h"
+#include "Factory_produse.h"
+#include "EroareProdus.h"
 
 
 using namespace csv;
@@ -13,49 +12,48 @@ using namespace csv;
 
 int main()
 {
-    std::ifstream file("date.csv");
-    CSVFormat format;
-    format.delimiter(';');
-    CSVReader reader(file, format);
+    //ProdusFactory produsFactory;
+    csv::CSVReader reader("date.csv");
 
-    std::vector<Produs*> produse;
-    Depozit depozit;
+       for (auto &row: reader)
+       {
+           try
+           {
+               std::string tipEchipamentStr = row["Tip Echipament"].get<>();
+               ProdusFactory::TipEchipament tipEchipament;
 
-    for (csv::CSVRow &row: reader)
-    {
-        std::unique_ptr<Produs> produsPtr = Produs::CitesteProduseDinFisier(row);
-        produse.push_back(produsPtr.release());
-        depozit.Adauga_produs(*produsPtr);
+               if (tipEchipamentStr == "Fotbal") {
+                   tipEchipament = ProdusFactory::Fotbal;
+               } else if (tipEchipamentStr == "Baschet") {
+                   tipEchipament = ProdusFactory::Baschet;
+               } else if (tipEchipamentStr == "Tenis") {
+                   tipEchipament = ProdusFactory::Tenis;
+               } else {
+                   throw EroareTipEchipament(tipEchipamentStr);
+               }
 
-        std::cout << "Nume Furnizor: " << produsPtr -> GetFurnizor().GetNume() << std::endl;
-        std::cout << "Adresa Furnizor: " << produsPtr -> GetFurnizor().GetAdresa() << std::endl;
-    }
+               Produs *produs = ProdusFactory::CitesteProdus(row, tipEchipament);
+
+               produs->SetPret(produs->AplicareDiscount());
+
+               std::cout << std::endl << *produs << std::endl;
+
+               delete produs;
+
+           }
+           catch (const EroareTipEchipament &e)
+           {std::cout<<" \nEroare: " << e.what() << std::endl;
+           }
+
+           catch (const EroareProprietateProdus &e)
+           {std::cout <<"\nEroare la proprietatea echipamentului: " << e.what() << std::endl;}
 
 
-    ComenziAchizitii comanda(100, "02/11/2023");
+       }
 
-    Furnizor furnizor1("Nike", "Adresa1");
-    Furnizor furnizor2("New Balance", "Adresa2");
-
-
-    //Produs produs1(1, "NumeProdus1", "Marime1", 50, 10, furnizor1);
-    //Produs produs2(2, "NumeProdus2", "Marime2", 60, 15, furnizor2);
-
-
-    //comanda.AdaugaProdus(produs1);
-    //comanda.AdaugaProdus(produs2);
-
-    depozit.ActualizarePret(1, 100);
-
-
-    //Produs * p = new Echipament_Baschet;
-    std::cout << "Detalii produse dupa actualizare:\n" << std::endl;
-
-    depozit.Sortare_produse_dupa_pret();
-    depozit.AfiseazaProduse();
-    //Produs::Afisare_Produse(produse);
 
     return 0;
 }
+
 
 

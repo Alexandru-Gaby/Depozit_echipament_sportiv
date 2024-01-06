@@ -105,8 +105,11 @@ add_executable(${PROJECT_NAME} main.cpp
         Echipament_Baschet.h
         Echipament_Tenis.cpp
         Echipament_Tenis.h
-        Interfata_Produs.cpp
-        Interfata_Produs.h)
+        Factory_produse.cpp
+        Factory_produse.h
+        EroareProdus.cpp
+        EroareProdus.h
+)
 
 ###############################################################################
 
@@ -150,4 +153,5 @@ target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/include)
 # update name in .github/workflows/cmake.yml:29 when changing "bin" name here
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 # install(DIRECTORY some_dir1 some_dir2 DESTINATION bin)
-install(FILES date.csv DESTINATION bin)
+install(FILES cmake-build-debug/date.csv DESTINATION bin)
+

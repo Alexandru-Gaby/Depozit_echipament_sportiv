@@ -3,22 +3,59 @@
 //
 
 #include "Echipament_Tenis.h"
+#include "EroareProdus.h"
+#include <cmath>
 #include <csv.hpp>
 
 
 float Echipament_Tenis::AplicareDiscount()
 {
-    if (GetTipSport() == "Tenis")
-    {
-        float discount = 0.2;
-        float valoareDiscount = GetPret() * discount;
-        SetPret(GetPret() - static_cast<int>(valoareDiscount));
-        std::cout << "Discount aplicat pentru Echipament_Tenis " << valoareDiscount << " RON" << std::endl;
+    float discount = 0.0;
+    float pret = static_cast<float>(GetPret());
 
-        return static_cast<float>(GetPret());
-    }else
+    if (dificultate == INCEPATOR)
     {
-        std::cout << "Nu se aplică discount pentru acest tip de echipament." << std::endl;
-        return static_cast<float>(GetPret());
+        discount = 8.1 * log(pret);
     }
+    else if (dificultate == AVANSAT)
+    {
+        discount = 5.2 * log(pret);
+    }
+    else if (dificultate == PROFESIONIST)
+    {
+        discount = 4.3 * log(pret);
+    }
+
+
+    float pretFinal = pret - discount;
+
+    SetPret(static_cast<int>(pretFinal));
+
+
+    return pretFinal;
+}
+
+
+Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
+Produs(et),dificultate(et.dificultate){}
+
+void Echipament_Tenis:: citire(const csv::CSVRow &row)
+{
+
+    std::string col = row["Experienta"].get<std::string>();
+    if (col == "INCEPATOR")
+    {
+        dificultate = INCEPATOR;
+    }else if (col == "AVANSAT")
+    {
+        dificultate = AVANSAT;
+    }else if(col == "PROFESIONIST")
+    {
+        dificultate = PROFESIONIST;
+    }else throw EroareProprietateProdus("Experienta",col);
+}
+
+Produs *Echipament_Tenis::clone() const
+{
+    return new Echipament_Tenis(*this);
 }

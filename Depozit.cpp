@@ -1,40 +1,48 @@
-//
-// Created by Alexandru-Gabriel on 09.12.2023.
-//
-
+#include <algorithm>
 #include "Depozit.h"
+#include <csv.hpp>
 
 
-void Depozit::Adauga_produs(const Produs &produs)
+[[maybe_unused]] Depozit::Depozit(const Depozit &other) : locatie(other.locatie),numeDepozit(other.numeDepozit)
 {
-    produseDepozit.push_back(produs);
-}
-
-
-void Depozit::Sortare_produse_dupa_pret()
-{
-    std::sort(produseDepozit.begin(), produseDepozit.end(), [] (const Produs &a, const Produs &b)
+    for(const auto& produs : other.produseDepozit)
     {
-        return a.GetPret() < b.GetPret();
-    });
-}
-
-void Depozit::AfiseazaProduse()
-{
-    for (const Produs &produs : produseDepozit)
-    {
-        std::cout << produs << std::endl;
-        std::cout << "---------------------------------------------------------------------------------------------------------------------" << std::endl;
+        produseDepozit.push_back(std::shared_ptr<Produs>(produs->clone()));
     }
 }
 
-void Depozit::ActualizarePret(int ID_produs, int Pret_nou)
+Depozit &Depozit::operator=(const Depozit &other)
 {
-    for(Produs &produs : produseDepozit)
+    if(this != &other)
     {
-        if(produs.GetID() == ID_produs )
+        produseDepozit.clear();
+        locatie = other.locatie;
+        numeDepozit = other.numeDepozit;
+
+        for (const auto& produs : other.produseDepozit)
         {
-            produs.SetPret(Pret_nou);
+            produseDepozit.push_back(std::shared_ptr<Produs>(produs->clone()));
+        }
+    }
+    return *this;
+}
+
+[[maybe_unused]] void Depozit::Sortare_produse_dupa_pret()
+{
+    std::sort(produseDepozit.begin(), produseDepozit.end(), [] (const std::shared_ptr<Produs> &a, const std::shared_ptr<Produs> &b)
+    {
+        return a->GetPret() < b->GetPret();
+    });
+}
+
+
+[[maybe_unused]] void Depozit::ActualizarePret(int ID_produs, int Pret_nou)
+{
+    for(auto &produs : produseDepozit)
+    {
+        if(produs->GetID() == ID_produs )
+        {
+            produs->SetPret(Pret_nou);
             break;
         }
     }

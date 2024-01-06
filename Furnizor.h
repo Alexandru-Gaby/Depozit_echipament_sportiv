@@ -8,15 +8,17 @@
 
 #include <string>
 
-class Furnizor {
+class Furnizor
+{
 private:
     std::string NumeFurnizor;
-    std::string Adresa;
+    std::string AdresaFurnizor;
 
 public:
-    Furnizor(){};
+    Furnizor()= default;
 
-    Furnizor(std::string nume, std::string adresa);
+    Furnizor(std::string numefurnizor, std::string adresa);
+
 
     Furnizor(const Furnizor &other);
 
@@ -29,9 +31,11 @@ public:
 
     friend std::istream &operator>>(std::istream &is, Furnizor &furnizor);
 
-    const std::string &GetNume() const;
 
-    const std::string &GetAdresa() const;;
+
+    void initializare(const std::string &numefurnizor, const std::string &adresa);
+
+
 };
 
 

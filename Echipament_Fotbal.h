@@ -10,20 +10,36 @@
 #include "Furnizor.h"
 #include "Produs.h"
 
+
 class Echipament_Fotbal: public Produs
 {
+public:
+    enum Culoare
+    {
+        ROSU,
+        ALBASTRU,
+        ALB
+    };
 private:
-    std:: string culoare;
+
+    Culoare culoare;
 
 public:
+
     Echipament_Fotbal(){};
 
-    Echipament_Fotbal(int id, std::string nume,
-                      std::string marime, int pret, int stoc, std::string tip_sport,
-                      const Furnizor &furnizor, std::string culoare_);
+    Echipament_Fotbal(const Echipament_Fotbal& ef);
+
+    ~Echipament_Fotbal()=default;
+
+    friend int Produs::GetPret() const;
+    friend int Produs::GetID() const;
+
+    Echipament_Fotbal* clone() const override;
+
+    void citire(const csv::CSVRow &is);
 
     float AplicareDiscount() override;
-
 
 
 };

@@ -1,73 +1,53 @@
-//
-// Created by Alexandru-Gabriel on 03.12.2023.
-//
 
 #include <string>
 #include <iostream>
 #include <memory>
+
 #include "Furnizor.h"
-#include "Interfata_Produs.h"
+#include "csv.hpp"
 
 #ifndef OOP_PRODUS_H
 #define OOP_PRODUS_H
 
 
-class CSVRow;
 
-class Produs:public Interfata_Produs
+class Produs
 {
-private:
+protected:
     int ID_produs;
     std::string Nume_produs;
     std::string Marime;
     int Pret;
     int Stoc_disponibil;
-    std::string TipSport;
     Furnizor furnizorProdus;
 
-
 public:
-    float AplicareDiscount(){};
 
     Produs(){};
 
-    Produs(int id, std::string nume, std::string marime, int pret, int stoc, std:: string tip_sport, const Furnizor &furnizor);
-
-
     Produs(const Produs &other);
 
-    Produs &operator=(const Produs &other);
+    Produs &operator = (const Produs &other);
 
+    //friend std::istream &operator >> (std::istream& is, Produs &produs);
+    friend std::ostream &operator << (std::ostream &os, const Produs &produs);
 
-    ~Produs() = default;
+    virtual Produs* clone() const = 0;
 
-    friend std::ostream &operator<<(std::ostream &os, const Produs &produs);
+    virtual ~Produs() = default;
+
+    virtual void citire(const csv::CSVRow &is);
+
+    virtual float AplicareDiscount()  = 0;
 
     int GetID() const;
 
     int GetPret() const;
 
-    std::string GetTipSport() const;
-
-    const Furnizor &GetFurnizor() const;
-
     void SetPret(int nouPret);
 
-    /*
-    static void Afisare_Produse(const std::vector<Produs> &produse)
-    {
-        for (const Produs &produs: produse)
-        {
-            std::cout << produs << std::endl;
-            std::cout
-                    << "---------------------------------------------------------------------------------------------------------------------"
-                    << std::endl;
-
-        }
-    }
-   */
-    static std::unique_ptr<Produs> CitesteProduseDinFisier(csv:: CSVRow &row);
-
+    void initializare(int id,const std::string &nume, const std::string &marime, int pret, int stoc,
+                      const std::string &numefurnizor,const std::string &adresa);
 
 };
 #endif

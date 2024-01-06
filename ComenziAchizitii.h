@@ -18,7 +18,7 @@ private:
     std::vector<Produs*> produseComandate;
 
 public:
-    ComenziAchizitii(int numar, std::string data);
+    [[maybe_unused]] ComenziAchizitii(int numar, std::string data);
 
     ComenziAchizitii(const ComenziAchizitii &other);
 
@@ -28,9 +28,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda);
 
-    void AdaugaProdus(const Produs* produs);
-
-
+    [[maybe_unused]] void AdaugaProdus(const Produs &produs);
 };
 
 #endif //OOP_COMENZIACHIZITII_H

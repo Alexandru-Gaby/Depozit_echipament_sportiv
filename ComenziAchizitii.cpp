@@ -3,32 +3,50 @@
 //
 
 #include "ComenziAchizitii.h"
+#include <iostream>
 
-ComenziAchizitii::ComenziAchizitii(int numar, std::string data)
+
+[[maybe_unused]] ComenziAchizitii::ComenziAchizitii(int numar, std::string data)
         : NumarComanda(numar), DataComanda(std::move(data)) {}
 
 ComenziAchizitii::ComenziAchizitii(const ComenziAchizitii &other)
-        : NumarComanda(other.NumarComanda), DataComanda(other.DataComanda),
-          produseComandate(other.produseComandate){}
+        : NumarComanda(other.NumarComanda),
+          DataComanda(other.DataComanda)
+    {
+    for (const auto &produs : other.produseComandate)
+        {
+        produseComandate.push_back(produs->clone());
+    }
+    }
+
 
 ComenziAchizitii::~ComenziAchizitii()
 {
     for (auto produs : produseComandate)
         delete produs;
+    produseComandate.clear();
 }
 
 ComenziAchizitii &ComenziAchizitii::operator=(const ComenziAchizitii &other)
 {
-    if (this == &other)
-        return *this;
-    NumarComanda = other.NumarComanda;
-    DataComanda = other.DataComanda;
+    if (this != &other)
+    {
+        NumarComanda = other.NumarComanda;
+        DataComanda = other.DataComanda;
 
-    for(auto produs : produseComandate)
-        delete produs;
 
-    produseComandate.clear();
-    produseComandate = other.produseComandate;
+        for (auto produs : produseComandate)
+        {
+            delete produs;
+        }
+        produseComandate.clear();
+
+
+        for (const auto &produs : other.produseComandate)
+        {
+            produseComandate.push_back(produs->clone());
+        }
+    }
 
     return *this;
 }
@@ -39,8 +57,8 @@ std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda)
     return os;
 }
 
-void ComenziAchizitii::AdaugaProdus(const Produs *produs)
+[[maybe_unused]] void ComenziAchizitii::AdaugaProdus(const Produs &produs)
 {
-    produseComandate.push_back(produs);
+    produseComandate.push_back(produs.clone());
 }
 

@@ -5,25 +5,38 @@
 #ifndef OOP_ECHIPAMENT_TENIS_H
 #define OOP_ECHIPAMENT_TENIS_H
 
-
-#include "Produs.h"
 #include <vector>
 #include <fstream>
+#include <csv.hpp>
+#include "Produs.h"
 
 
 class Echipament_Tenis: public Produs
 {
+public:
+    enum Dificultate
+    {   INCEPATOR,
+        AVANSAT,
+        PROFESIONIST
+    };
+
 private:
-    std:: string culoare;
+    Dificultate dificultate;
 
 public:
+
+
     Echipament_Tenis(){};
 
-    Echipament_Tenis(int id, std::string nume,std::string marime,int pret, int stoc, std:: string tip_sport,const Furnizor furnizor, std:: string culoare_);
+    Echipament_Tenis(const Echipament_Tenis &et);
+
+    ~Echipament_Tenis()=default;
 
     float AplicareDiscount() override;
 
-    //static std::vector<Produs>Cauta_produs(const std::string& numeFisier);
+    void citire(const csv::CSVRow &row) override;
+
+    Produs* clone() const override;
 };
 
 #endif //OOP_ECHIPAMENT_TENIS_H
