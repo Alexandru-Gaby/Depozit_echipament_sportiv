@@ -1,7 +1,3 @@
-//
-// Created by Alexandru-Gabriel on 10.12.2023.
-//
-
 #include <csv.hpp>
 #include "Echipament_Fotbal.h"
 #include "cmath"
@@ -9,7 +5,7 @@
 
 
 Echipament_Fotbal::Echipament_Fotbal(const Echipament_Fotbal &ef):
-Produs(ef), culoare(ef.culoare) {}
+Produs(ef), culoare(ROSU) {}
 
 float Echipament_Fotbal::AplicareDiscount()
 {

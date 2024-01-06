@@ -3,7 +3,8 @@
 #include "Echipament_Baschet.h"
 #include "EroareProdus.h"
 
-Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb) :Produs(eb),taraProductie(eb.taraProductie){}
+Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb):
+Produs(eb),taraProductie(SUA){}
 
 float Echipament_Baschet::AplicareDiscount()
 {

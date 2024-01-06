@@ -8,6 +8,10 @@
 #include <csv.hpp>
 
 
+Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
+        Produs(et),dificultate(PROFESIONIST){}
+
+
 float Echipament_Tenis::AplicareDiscount()
 {
     float discount = 0.0;
@@ -35,9 +39,6 @@ float Echipament_Tenis::AplicareDiscount()
     return pretFinal;
 }
 
-
-Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
-Produs(et),dificultate(et.dificultate){}
 
 void Echipament_Tenis:: citire(const csv::CSVRow &row)
 {

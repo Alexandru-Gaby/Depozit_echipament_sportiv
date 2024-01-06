@@ -56,9 +56,9 @@ std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda)
     os << "Numar Comanda: " << comanda.NumarComanda << " | Data Comanda: " << comanda.DataComanda;
     return os;
 }
-
+/*
 [[maybe_unused]] void ComenziAchizitii::AdaugaProdus(const Produs &produs)
 {
     produseComandate.push_back(produs.clone());
 }
-
+*/

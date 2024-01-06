@@ -27,7 +27,7 @@ Depozit &Depozit::operator=(const Depozit &other)
     return *this;
 }
 
-[[maybe_unused]] void Depozit::Sortare_produse_dupa_pret()
+/*[[maybe_unused]] void Depozit::Sortare_produse_dupa_pret()
 {
     std::sort(produseDepozit.begin(), produseDepozit.end(), [] (const std::shared_ptr<Produs> &a, const std::shared_ptr<Produs> &b)
     {
@@ -46,4 +46,4 @@ Depozit &Depozit::operator=(const Depozit &other)
             break;
         }
     }
-}
+}*/

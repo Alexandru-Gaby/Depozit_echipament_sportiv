@@ -37,7 +37,7 @@ public:
 
     Echipament_Fotbal* clone() const override;
 
-    void citire(const csv::CSVRow &is);
+    void citire(const csv::CSVRow &is) override;
 
     float AplicareDiscount() override;
 
