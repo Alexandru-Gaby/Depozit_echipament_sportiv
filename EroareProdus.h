@@ -11,13 +11,13 @@ class EroareProdus: public std::runtime_error
 class EroareProprietateProdus : public EroareProdus
 {
 public:
-    EroareProprietateProdus(const std::string& prop, const std::string &val) : EroareProdus(std::string ("Proprietatea ") + prop + " a primit valoarea invalida " + val){}
+    EroareProprietateProdus(const std::string& prop, const std::string &val);
 };
 
 class EroareTipEchipament: public EroareProdus
 {
 public:
-   explicit EroareTipEchipament( const std::string& tip) : EroareProdus(std::string("Tipul ") +  tip +  " nu exista! "){}
+   explicit EroareTipEchipament( const std::string& tip);
 };
 
 
