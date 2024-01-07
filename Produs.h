@@ -23,6 +23,7 @@ protected:
 
 public:
 
+    Produs() = default;
 
     Produs(int id, const std::string& nume, const std::string& marime, int pret, int stoc, const Furnizor& furnizor);
 

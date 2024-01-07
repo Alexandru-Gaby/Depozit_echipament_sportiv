@@ -3,6 +3,9 @@
 #include "Echipament_Baschet.h"
 #include "EroareProdus.h"
 
+
+Echipament_Baschet::Echipament_Baschet() : Produs() {}
+
 Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb):
 Produs(eb),taraProductie(eb.taraProductie){}
 
@@ -53,3 +56,5 @@ void Echipament_Baschet::citire(const csv::CSVRow &row)
     }else throw EroareProprietateProdus("Tara productie", col);
 
 }
+
+

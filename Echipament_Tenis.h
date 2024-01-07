@@ -24,6 +24,7 @@ private:
     Dificultate dificultate;
 
 public:
+    Echipament_Tenis();
 
     Echipament_Tenis(const Echipament_Tenis &et);
 

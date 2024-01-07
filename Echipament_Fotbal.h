@@ -26,6 +26,8 @@ private:
 
 public:
 
+    Echipament_Fotbal();
+
     Echipament_Fotbal(const Echipament_Fotbal &ef);
 
     ~Echipament_Fotbal()=default;

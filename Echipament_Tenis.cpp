@@ -4,6 +4,8 @@
 #include <csv.hpp>
 
 
+Echipament_Tenis::Echipament_Tenis() :Produs(){}
+
 Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
         Produs(et),dificultate(et.dificultate){}
 
@@ -56,3 +58,5 @@ Produs *Echipament_Tenis::clone() const
 {
     return new Echipament_Tenis(*this);
 }
+
+

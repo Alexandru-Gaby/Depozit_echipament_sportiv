@@ -23,6 +23,8 @@ private:
 
 public:
 
+    Echipament_Baschet();
+
     Echipament_Baschet(const Echipament_Baschet &eb);
 
     ~Echipament_Baschet()=default;
