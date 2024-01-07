@@ -1,6 +1,7 @@
 #include "EroareProdus.h"
+#include <string>
 
 EroareProprietateProdus::EroareProprietateProdus(const std::string &prop, const std::string &val) :
-EroareProdus(std::string ("Proprietatea ") + prop + " a primit valoarea invalida " + val){}
+EroareProdus("Proprietatea " + prop + " a primit valoarea invalida " + val){}
 
-EroareTipEchipament::EroareTipEchipament(const std::string &tip) : EroareProdus(std::string("Tipul ") +  tip +  " nu exista! "){}
+EroareTipEchipament::EroareTipEchipament(const std::string &tip) : EroareProdus("Tipul " +  tip +  " nu exista! "){}

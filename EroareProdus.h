@@ -2,6 +2,8 @@
 #define OOP_EROAREPRODUS_H
 
 #include <stdexcept>
+#include <string>
+
 
 class EroareProdus: public std::runtime_error
 {
