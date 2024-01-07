@@ -4,8 +4,9 @@
 #include "EroareProdus.h"
 
 
-Echipament_Fotbal::Echipament_Fotbal(const Echipament_Fotbal &ef):
-Produs(ef), culoare(ROSU) {}
+Echipament_Fotbal::Echipament_Fotbal(const Echipament_Fotbal &ef) :
+        Produs(ef), culoare(ef.culoare) {}
+
 
 float Echipament_Fotbal::AplicareDiscount()
 {
@@ -50,3 +51,4 @@ Echipament_Fotbal *Echipament_Fotbal::clone() const
 {
     return new Echipament_Fotbal(*this);
 }
+

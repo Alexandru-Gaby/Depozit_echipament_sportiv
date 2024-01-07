@@ -1,7 +1,3 @@
-//
-// Created by Alexandru-Gabriel on 10.12.2023.
-//
-
 #include "Echipament_Tenis.h"
 #include "EroareProdus.h"
 #include <cmath>
@@ -9,7 +5,7 @@
 
 
 Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
-        Produs(et),dificultate(PROFESIONIST){}
+        Produs(et),dificultate(et.dificultate){}
 
 
 float Echipament_Tenis::AplicareDiscount()

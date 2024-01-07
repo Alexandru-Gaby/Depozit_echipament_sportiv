@@ -25,9 +25,6 @@ private:
 
 public:
 
-
-    Echipament_Tenis(){};
-
     Echipament_Tenis(const Echipament_Tenis &et);
 
     ~Echipament_Tenis()=default;

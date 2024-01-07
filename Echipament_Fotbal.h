@@ -26,14 +26,12 @@ private:
 
 public:
 
-    Echipament_Fotbal(){};
-
-    Echipament_Fotbal(const Echipament_Fotbal& ef);
+    Echipament_Fotbal(const Echipament_Fotbal &ef);
 
     ~Echipament_Fotbal()=default;
 
-    friend int Produs::GetPret() const;
-    friend int Produs::GetID() const;
+    //friend int Produs::GetPret() const;
+    //friend int Produs::GetID() const;
 
     Echipament_Fotbal* clone() const override;
 

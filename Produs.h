@@ -23,13 +23,13 @@ protected:
 
 public:
 
-    Produs(){};
+
+    Produs(int id, const std::string& nume, const std::string& marime, int pret, int stoc, const Furnizor& furnizor);
 
     Produs(const Produs &other);
 
     Produs &operator = (const Produs &other);
 
-    //friend std::istream &operator >> (std::istream& is, Produs &produs);
     friend std::ostream &operator << (std::ostream &os, const Produs &produs);
 
     virtual Produs* clone() const = 0;
@@ -40,7 +40,7 @@ public:
 
     virtual float AplicareDiscount()  = 0;
 
-    int GetID() const;
+    //int GetID() const;
 
     int GetPret() const;
 

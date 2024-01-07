@@ -4,7 +4,7 @@
 #include "EroareProdus.h"
 
 Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb):
-Produs(eb),taraProductie(SUA){}
+Produs(eb),taraProductie(eb.taraProductie){}
 
 float Echipament_Baschet::AplicareDiscount()
 {

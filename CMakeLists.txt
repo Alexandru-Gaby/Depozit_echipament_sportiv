@@ -153,5 +153,5 @@ target_include_directories(${PROJECT_NAME} SYSTEM PRIVATE ext/include)
 # update name in .github/workflows/cmake.yml:29 when changing "bin" name here
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 # install(DIRECTORY some_dir1 some_dir2 DESTINATION bin)
-install(FILES cmake-build-debug/date.csv DESTINATION bin)
-
+#install(FILES cmake-build-debug/date.csv DESTINATION bin)
+install(FILES date.csv DESTINATION bin)

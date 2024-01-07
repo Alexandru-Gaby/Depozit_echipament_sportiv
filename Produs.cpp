@@ -3,6 +3,10 @@
 
 using namespace csv;
 
+Produs::Produs(int id, const std::string &nume, const std::string &marime, int pret, int stoc, const Furnizor &furnizor)
+        : ID_produs(id), Nume_produs(nume), Marime(marime), Pret(pret), Stoc_disponibil(stoc), furnizorProdus(furnizor) {}
+
+
 Produs::Produs(const Produs &other)
         : ID_produs(other.ID_produs), Nume_produs(other.Nume_produs), Marime(other.Marime),
           Pret(other.Pret), Stoc_disponibil(other.Stoc_disponibil),furnizorProdus(other.furnizorProdus) {}
@@ -34,12 +38,12 @@ std::ostream &operator<<(std::ostream &os, const Produs &produs)
 
 void Produs::citire(const CSVRow &){}
 
-
+/*
 int Produs::GetID() const
 {
     return ID_produs;
 }
-
+*/
 int Produs::GetPret() const
 {
     return Pret;
@@ -72,3 +76,4 @@ void Produs::initializare(int id,const std::string &nume, const std::string &mar
     this->Stoc_disponibil=stoc;
     this->furnizorProdus.initializare(numefurnizor, adresa);
 }
+

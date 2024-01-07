@@ -22,7 +22,6 @@ private:
     TaraProductie taraProductie;
 
 public:
-    Echipament_Baschet(){};
 
     Echipament_Baschet(const Echipament_Baschet &eb);
 
@@ -31,7 +30,6 @@ public:
     float AplicareDiscount() override;
 
     Echipament_Baschet* clone() const override;
-
 
     void citire(const csv::CSVRow &row) override;
 };
