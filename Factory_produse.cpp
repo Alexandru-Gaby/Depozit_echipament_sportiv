@@ -18,20 +18,21 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
     std::string numefurnizor = row["NumeFurnizor"].get<>();
     std::string adresa = row["Adresa"].get<>();
 
-    Produs* produsPtr = nullptr;
+    //Produs* produsPtr = nullptr;
+    std::unique_ptr<Produs> produsPtr;
     Furnizor furnizor(numefurnizor,adresa);
 
 
     switch (tipEchipament)
     {
         case Fotbal:
-            produsPtr = new Echipament_Fotbal();
+            produsPtr = std::make_unique<Echipament_Fotbal>();
             break;
         case Baschet:
-            produsPtr = new Echipament_Baschet();
+            produsPtr = std::make_unique<Echipament_Baschet>();
             break;
         case Tenis:
-            produsPtr = new Echipament_Tenis();
+            produsPtr = std::make_unique<Echipament_Tenis>();
             break;
 
 
@@ -41,5 +42,5 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
 
 
 
-    return produsPtr;
+    return produsPtr.release();
 }

@@ -19,6 +19,7 @@ public:
     static Produs *CitesteProdus(csv::CSVRow &row, TipEchipament tipEchipament);
 
 
+
 };
 
 
