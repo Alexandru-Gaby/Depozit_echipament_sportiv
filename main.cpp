@@ -12,7 +12,7 @@ using namespace csv;
 
 int main()
 {
-    ProdusFactory produsFactory;
+    //ProdusFactory produsFactory;
     csv::CSVReader reader("date.csv");
 
        for (auto &row: reader)

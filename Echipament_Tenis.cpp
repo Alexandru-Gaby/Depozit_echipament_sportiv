@@ -4,7 +4,7 @@
 #include <csv.hpp>
 
 
-Echipament_Tenis::Echipament_Tenis() :Produs(){}
+Echipament_Tenis::Echipament_Tenis() :Produs(),dificultate(Dificultate::PROFESIONIST){}
 
 Echipament_Tenis::Echipament_Tenis(const Echipament_Tenis &et) :
         Produs(et),dificultate(et.dificultate){}

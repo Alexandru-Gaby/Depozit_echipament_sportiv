@@ -4,7 +4,8 @@
 #include "EroareProdus.h"
 
 
-Echipament_Fotbal::Echipament_Fotbal() :Produs(){}
+Echipament_Fotbal::Echipament_Fotbal() : Produs(), culoare(Culoare::ROSU) {}
+
 
 Echipament_Fotbal::Echipament_Fotbal(const Echipament_Fotbal &ef) :
         Produs(ef), culoare(ef.culoare) {}

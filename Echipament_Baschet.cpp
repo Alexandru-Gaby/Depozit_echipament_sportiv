@@ -4,7 +4,7 @@
 #include "EroareProdus.h"
 
 
-Echipament_Baschet::Echipament_Baschet() : Produs() {}
+Echipament_Baschet::Echipament_Baschet() : Produs(),taraProductie(TaraProductie::SUA) {}
 
 Echipament_Baschet::Echipament_Baschet(const Echipament_Baschet &eb):
 Produs(eb),taraProductie(eb.taraProductie){}
