@@ -25,7 +25,7 @@ float Echipament_Fotbal::AplicareDiscount()
         Discount = 6.5 * sqrt(pretInitial);
     }else if (culoare == ALB)
     {
-        Discount = 7.3 * sqrt(pretInitial);
+        Discount = 4 * sqrt(pretInitial);
     }
     float pretFinal = pretInitial - Discount;
 

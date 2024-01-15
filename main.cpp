@@ -5,6 +5,7 @@
 #include "Factory_produse.h"
 #include "EroareProdus.h"
 #include "Depozit.h"
+#include "ComenziAchizitii.h"
 
 
 using namespace csv;
@@ -13,6 +14,7 @@ using namespace csv;
 int main()
 {
     //ProdusFactory produsFactory;
+    ComenziAchizitii comanda(1, "2024-01-15");
     csv::CSVReader reader("date.csv");
 
        for (auto &row: reader)
@@ -38,6 +40,8 @@ int main()
 
                Depozit::GetDepozit().AdaugaProdus(produs);
 
+               comanda.AdaugaProdus(*produs);
+
                //std::cout << std::endl << *produs << std::endl;
 
                //delete produs;
@@ -53,6 +57,9 @@ int main()
        }
 
         std::cout<<Depozit::GetDepozit();
+        std::cout << comanda << std::endl;
+        std::cout << "Total comanda: " << comanda.GetTotal() << " RON" << std::endl;
+
 
 
     return 0;

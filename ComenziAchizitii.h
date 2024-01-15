@@ -30,7 +30,7 @@ public:
 
     [[maybe_unused]] void AdaugaProdus(const Produs &produs);
 
-    [[maybe_unused]] long GetTotal() const;
+     long GetTotal() const;
 };
 
 #endif //OOP_COMENZIACHIZITII_H

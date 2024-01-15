@@ -42,7 +42,7 @@ ComenziAchizitii &ComenziAchizitii::operator=(const ComenziAchizitii &other)
 
 std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda)
 {
-    os << "Numar Comanda: " << comanda.NumarComanda << " | Data Comanda: " << comanda.DataComanda;
+    os << "\nNumar Comanda: " << comanda.NumarComanda << " | Data Comanda: " << comanda.DataComanda;
     return os;
 }
 
@@ -60,4 +60,4 @@ long ComenziAchizitii::GetTotal() const
         Total+=produs->AplicareDiscount();
     }
      return Total;
-};
+}
