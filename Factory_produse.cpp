@@ -8,7 +8,6 @@
 #include "Echipament_Tenis.h"
 
 
-
 Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipament tipEchipament)
 {
     int id = std::stoi(row["ID_produs"].get<>());
@@ -19,31 +18,34 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
     std::string numefurnizor = row["NumeFurnizor"].get<>();
     std::string adresa = row["Adresa"].get<>();
 
+    std::unique_ptr<Produs> produsPtr;
 
-    Produs *produsPtr = nullptr;
-    Furnizor furnizor(numefurnizor,adresa);
-
-
-    switch (tipEchipament)
+    try
     {
-        case Fotbal:
-            produsPtr = new Echipament_Fotbal();
-            break;
-        case Baschet:
-            produsPtr = new Echipament_Baschet();
-            break;
-        case Tenis:
-            produsPtr = new Echipament_Tenis();
-            break;
+        switch (tipEchipament)
+        {
+            case Fotbal:
+                produsPtr = std::make_unique<Echipament_Fotbal>();
+                break;
+            case Baschet:
+                produsPtr = std::make_unique<Echipament_Baschet>();
+                break;
+            case Tenis:
+                produsPtr = std::make_unique<Echipament_Tenis>();
+                break;
+        }
 
-
+        if (produsPtr)
+        {
+            produsPtr->initializare(id, nume, marime, pret, stoc, numefurnizor, adresa);
+            produsPtr->citire(row);
+        }
     }
-    if(produsPtr)
+    catch (const std::exception &e)
     {
-        produsPtr->initializare(id, nume, marime, pret, stoc, numefurnizor, adresa);
-        produsPtr->citire(row);
+        produsPtr.reset();
+        throw e;
     }
 
-
-    return produsPtr;
+    return produsPtr.release();
 }
