@@ -18,20 +18,21 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
     std::string numefurnizor = row["NumeFurnizor"].get<>();
     std::string adresa = row["Adresa"].get<>();
 
-    std::unique_ptr<Produs> produsPtr;
+    Produs *produsPtr = nullptr;
+    Furnizor furnizor(numefurnizor, adresa);
 
     try
     {
         switch (tipEchipament)
         {
             case Fotbal:
-                produsPtr = std::make_unique<Echipament_Fotbal>();
+                produsPtr = new Echipament_Fotbal();
                 break;
             case Baschet:
-                produsPtr = std::make_unique<Echipament_Baschet>();
+                produsPtr = new Echipament_Baschet();
                 break;
             case Tenis:
-                produsPtr = std::make_unique<Echipament_Tenis>();
+                produsPtr = new Echipament_Tenis();
                 break;
         }
 
@@ -40,12 +41,14 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
             produsPtr->initializare(id, nume, marime, pret, stoc, numefurnizor, adresa);
             produsPtr->citire(row);
         }
+
+        return produsPtr;
     }
     catch (const std::exception &e)
     {
-        produsPtr.reset();
-        throw e;
+        std::cerr << "Caught exception: " << e.what() << std::endl;
+        delete produsPtr;
+        throw;
     }
 
-    return produsPtr.release();
 }
