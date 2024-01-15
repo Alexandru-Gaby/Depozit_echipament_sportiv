@@ -1,30 +1,21 @@
-#include <algorithm>
 #include "Depozit.h"
 #include <csv.hpp>
 
 
-[[maybe_unused]] Depozit::Depozit(const Depozit &other) : locatie(other.locatie),numeDepozit(other.numeDepozit)
+
+
+void Depozit::AdaugaProdus(Produs *prod)
 {
-    for(const auto& produs : other.produseDepozit)
-    {
-        produseDepozit.push_back(std::shared_ptr<Produs>(produs->clone()));
-    }
+produseDepozit.push_back( std::shared_ptr<Produs>(prod));
 }
 
-Depozit &Depozit::operator=(const Depozit &other)
+std:: ostream &operator<<(std::ostream &os,const Depozit& dep)
 {
-    if(this != &other)
+    for(auto prod:dep.produseDepozit)
     {
-        produseDepozit.clear();
-        locatie = other.locatie;
-        numeDepozit = other.numeDepozit;
-
-        for (const auto& produs : other.produseDepozit)
-        {
-            produseDepozit.push_back(std::shared_ptr<Produs>(produs->clone()));
-        }
+        os << *prod;
     }
-    return *this;
+    return os;
 }
 
 /*[[maybe_unused]] void Depozit::Sortare_produse_dupa_pret()
@@ -47,3 +38,12 @@ Depozit &Depozit::operator=(const Depozit &other)
         }
     }
 }*/
+
+Depozit& Depozit::GetDepozit()
+{
+    return instanta;
+}
+
+
+Depozit Depozit::instanta = {};
+

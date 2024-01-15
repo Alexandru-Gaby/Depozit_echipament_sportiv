@@ -6,6 +6,7 @@
 #include "Echipament_Fotbal.h"
 #include "Echipament_Baschet.h"
 #include "Echipament_Tenis.h"
+#include "EroareProdus.h"
 
 
 Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipament tipEchipament)
@@ -19,20 +20,20 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
     std::string adresa = row["Adresa"].get<>();
 
     //Produs* produsPtr = nullptr;
-    std::unique_ptr<Produs> produsPtr;
+    Produs *produsPtr;
     Furnizor furnizor(numefurnizor,adresa);
 
 
     switch (tipEchipament)
     {
         case Fotbal:
-            produsPtr = std::make_unique<Echipament_Fotbal>();
+            produsPtr = new Echipament_Fotbal();
             break;
         case Baschet:
-            produsPtr = std::make_unique<Echipament_Baschet>();
+            produsPtr = new Echipament_Baschet();
             break;
         case Tenis:
-            produsPtr = std::make_unique<Echipament_Tenis>();
+            produsPtr = new Echipament_Tenis();
             break;
 
 
@@ -42,5 +43,5 @@ Produs *ProdusFactory::CitesteProdus(csv::CSVRow &row, ProdusFactory::TipEchipam
 
 
 
-    return produsPtr.release();
+    return produsPtr;
 }

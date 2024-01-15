@@ -1,10 +1,10 @@
 #include <iostream>
-#include <vector>
 #include <string>
 #include "csv.hpp"
 #include "Produs.h"
 #include "Factory_produse.h"
 #include "EroareProdus.h"
+#include "Depozit.h"
 
 
 using namespace csv;
@@ -36,20 +36,23 @@ int main()
 
                produs->SetPret(produs->AplicareDiscount());
 
-               std::cout << std::endl << *produs << std::endl;
+               Depozit::GetDepozit().AdaugaProdus(produs);
 
-               delete produs;
+               //std::cout << std::endl << *produs << std::endl;
+
+               //delete produs;
 
            }
            catch (const EroareTipEchipament &e)
-           {std::cout<<" \nEroare: " << e.what() << std::endl;
-           }
+           {std::cout<<" \nEroare: " << e.what() << std::endl;}
 
            catch (const EroareProprietateProdus &e)
            {std::cout <<"\nEroare la proprietatea echipamentului: " << e.what() << std::endl;}
 
 
        }
+
+        std::cout<<Depozit::GetDepozit();
 
 
     return 0;

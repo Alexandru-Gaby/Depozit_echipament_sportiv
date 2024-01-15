@@ -10,34 +10,39 @@
 #include <csv.hpp>
 #include "Produs.h"
 
-class [[maybe_unused]] Depozit
+class Depozit
 {
 private:
     std::vector<std::shared_ptr<Produs>> produseDepozit;
     std::string locatie;
     std::string numeDepozit;
+    static Depozit instanta;
 
-public:
     Depozit()= default;
 
-    [[maybe_unused]] Depozit(const Depozit &other);
+public:
+
+
+    Depozit(const Depozit &other)=delete;
 
     virtual ~Depozit() = default;
 
-    Depozit &operator=(const Depozit& other);
-
+    Depozit &operator=(const Depozit& other)=delete;
 
     [[maybe_unused]] void Sortare_produse_dupa_pret();
 
-    [[maybe_unused]] void AfiseazaProduse();
+    //void AfiseazaProduse();
 
     [[maybe_unused]] void ActualizarePret(int ID_produs, int Pret_nou);
 
     //void CitesteProduseDinFisierCSV();
 
-    //void AdaugaProdusDinFisier(const csv::CSVRow& row);
+    static Depozit& GetDepozit();
 
+    void AdaugaProdus(Produs*);
+
+    friend std:: ostream &operator<<(std::ostream &os,const Depozit&);
 };
-
+std:: ostream &operator<<(std::ostream &os,const Depozit& );
 
 #endif //OOP_DEPOZIT_H

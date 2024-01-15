@@ -10,22 +10,16 @@
         : NumarComanda(numar), DataComanda(std::move(data)) {}
 
 ComenziAchizitii::ComenziAchizitii(const ComenziAchizitii &other)
-        : NumarComanda(other.NumarComanda),
-          DataComanda(other.DataComanda)
+        : NumarComanda(other.NumarComanda),DataComanda(other.DataComanda)
     {
     for (const auto &produs : other.produseComandate)
         {
-        produseComandate.push_back(produs->clone());
-    }
+            produseComandate.push_back(std::shared_ptr <Produs> (produs->clone()));
+        }
     }
 
 
-ComenziAchizitii::~ComenziAchizitii()
-{
-    for (auto produs : produseComandate)
-        delete produs;
-    produseComandate.clear();
-}
+
 
 ComenziAchizitii &ComenziAchizitii::operator=(const ComenziAchizitii &other)
 {
@@ -34,17 +28,12 @@ ComenziAchizitii &ComenziAchizitii::operator=(const ComenziAchizitii &other)
         NumarComanda = other.NumarComanda;
         DataComanda = other.DataComanda;
 
-
-        for (auto produs : produseComandate)
-        {
-            delete produs;
-        }
         produseComandate.clear();
 
 
         for (const auto &produs : other.produseComandate)
         {
-            produseComandate.push_back(produs->clone());
+            produseComandate.push_back(std::shared_ptr <Produs> (produs->clone()));
         }
     }
 
@@ -56,9 +45,19 @@ std::ostream &operator<<(std::ostream &os, const ComenziAchizitii &comanda)
     os << "Numar Comanda: " << comanda.NumarComanda << " | Data Comanda: " << comanda.DataComanda;
     return os;
 }
-/*
-[[maybe_unused]] void ComenziAchizitii::AdaugaProdus(const Produs &produs)
+
+
+void ComenziAchizitii::AdaugaProdus(const Produs &produs)
 {
-    produseComandate.push_back(produs.clone());
+    produseComandate.push_back(std::shared_ptr <Produs> (produs.clone()));
 }
-*/
+
+long ComenziAchizitii::GetTotal() const
+{
+    long Total = 0;
+     for (const auto &produs : produseComandate)
+     {
+        Total+=produs->AplicareDiscount();
+    }
+     return Total;
+};
